@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contenido Condicional</title>
+</head>
+<body>
+<h1>Contenido Condicional</h1>
+
+<div th:if="${showSection1}">
+    <h2>Sección 1</h2>
+</div>
+
+<div th:if="${showSection2}">
+    <h2>Sección 2</h2>
+</div>
+
+<div th:if="${showSection3}">
+    <h2>Sección 3</h2>
+</div>
+
+</body>
+</html>
