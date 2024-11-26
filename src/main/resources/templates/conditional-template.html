@@ -2,21 +2,118 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Contenido Condicional</title>
+    <title>PDF Generation Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 10px 0;
+        }
+
+        .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f4f4f4;
+        }
+
+        .signature {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .signature .line {
+            width: 60%;
+            margin: 20px auto;
+            border-top: 2px solid #000;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-<h1>Contenido Condicional</h1>
 
-<div th:if="${showSection1}">
-    <h2>Sección 1</h2>
+<div class="header">
+    <h1>Generación de PDF</h1>
+    <p>Documento generado dinamicamente</p>
 </div>
 
-<div th:if="${showSection2}">
+<div class="section" th:if="${showSection1}">
+    <h2>Seccion 1</h2>
+    <div class="checkbox">
+        <input type="checkbox" /> Checkbox
+    </div>
+    <img src="https://besmart.company/wp-content/uploads/2018/11/BPN_Paribas_Group_logo_cardif.jpg" alt="Imagen de ejemplo" width="200px" height="200px" />
+    <p>Descripcion de la seccion 1.</p>
+</div>
+
+<div class="section" th:if="${showSection2}">
     <h2>Sección 2</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Correo Electrónico</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Juan Perez</td>
+            <td>30</td>
+            <td>juan.perez@gmail.com</td>
+        </tr>
+        <tr>
+            <td>Maria Lopez</td>
+            <td>25</td>
+            <td>maria.lopez@gmail.com</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Tabla seccion 2.</p>
 </div>
 
-<div th:if="${showSection3}">
-    <h2>Sección 3</h2>
+<div class="section" th:if="${showSection3}">
+    <h2>Seccion 3</h2>
+    <p>Por favor, firme:</p>
+    <div class="signature">
+        <div class="line"></div>
+        <p>Firma del usuario</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Generado automaticamente el <span th:text="${#dates.format(new java.util.Date(), 'yyyy-MM-dd HH:mm:ss')}"></span>.</p>
 </div>
 
 </body>
