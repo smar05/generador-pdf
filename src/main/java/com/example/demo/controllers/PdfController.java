@@ -26,6 +26,7 @@ public class PdfController {
         context.setVariable("showSection1", showSection1);
         context.setVariable("showSection2", showSection2);
         context.setVariable("showSection3", showSection3);
+        context.setVariable("title", "Generación de PDF");
 
         byte[] pdfBytes = pdfService.generatePdf("conditional-template", context);
 
