@@ -4,21 +4,46 @@
     <meta charset="UTF-8" />
     <title>PDF Generation Example</title>
     <link th:href="@{src/main/resources/static/css/styles.css}" rel="stylesheet" />
+    <style>
+        .header, .footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .section {
+            margin: 20px;
+        }
+        .signature .line {
+            border-top: 1px solid black;
+            width: 200px;
+            margin: 10px 0;
+        }
+        .input-field {
+            margin: 10px 0;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="header">
     <h1 th:text="${title}"></h1>
-    <p>Documento generado dinamicamente</p>
+    <p>Documento generado dinámicamente</p>
 </div>
 
 <div class="section" th:if="${showSection1}">
-    <h2>Seccion 1</h2>
+    <h2>Sección 1</h2>
     <div class="checkbox">
         <input type="checkbox" /> Checkbox
     </div>
     <img th:src="@{src/main/resources/static/images/logo.jpg}" alt="Imagen de ejemplo" width="200px" height="200px" />
-    <p>Descripcion de la seccion 1.</p>
+    <p>Descripción de la sección 1.</p>
+    <div class="input-field">
+        <label for="campoTexto">Ingrese un texto:</label>
+        <input type="text" id="campoTexto" placeholder="Escribe aquí..." />
+    </div>
 </div>
 
 <div class="section" th:if="${showSection2}">
@@ -33,22 +58,22 @@
         </thead>
         <tbody>
         <tr>
-            <td>Juan Perez</td>
+            <td>Juan Pérez</td>
             <td>30</td>
             <td>juan.perez@gmail.com</td>
         </tr>
         <tr>
-            <td>Maria Lopez</td>
+            <td>María López</td>
             <td>25</td>
             <td>maria.lopez@gmail.com</td>
         </tr>
         </tbody>
     </table>
-    <p>Tabla seccion 2.</p>
+    <p>Tabla sección 2.</p>
 </div>
 
 <div class="section" th:if="${showSection3}">
-    <h2>Seccion 3</h2>
+    <h2>Sección 3</h2>
     <p>Por favor, firme:</p>
     <div class="signature">
         <div class="line"></div>
@@ -57,7 +82,7 @@
 </div>
 
 <div class="footer">
-    <p>Generado automaticamente el <span th:text="${#dates.format(new java.util.Date(), 'yyyy-MM-dd HH:mm:ss')}"></span>.</p>
+    <p>Generado automáticamente el <span th:text="${#dates.format(new java.util.Date(), 'yyyy-MM-dd HH:mm:ss')}"></span>.</p>
 </div>
 
 </body>
