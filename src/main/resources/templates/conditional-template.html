@@ -2,88 +2,522 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PDF Generation Example</title>
     <link th:href="@{src/main/resources/static/css/styles.css}" rel="stylesheet" />
-    <style>
-        .header, .footer {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .section {
-            margin: 20px;
-        }
-        .signature .line {
-            border-top: 1px solid black;
-            width: 200px;
-            margin: 10px 0;
-        }
-        .input-field {
-            margin: 10px 0;
-        }
-        input[type="text"] {
-            width: 300px;
-            padding: 5px;
-        }
-    </style>
 </head>
 <body>
+<div class="container">
+    <section id="autores">
+        <div class="logos">
+            <h1>Seguro integral para Cáncer</h1>
+            <img th:src="@{src/main/resources/static/images/bancolombia.png}" alt="Bancolombia" class="logo" />
+            <img
+                    th:src="@{src/main/resources/static/images/cardif.png}"
+                    alt="BNP Paribas Cardif"
+                    class="logo"
+            />
+        </div>
 
-<div class="header">
-    <h1 th:text="${title}"></h1>
-    <p>Documento generado dinámicamente</p>
+        <!-- Actores del Seguro -->
+        <section class="insurance-actors">
+            <h2>Actores del seguro</h2>
+            <div class="actors-container">
+                <div class="actor">
+                    <h3>Tomador / Asegurado</h3>
+                    <input type="text" class="actor-info" />
+                </div>
+                <div class="actor">
+                    <h3>Aseguradora</h3>
+                    <p>CARDIF COLOMBIA SEGUROS GENERALES S.A.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Datos del tomador/asegurado -->
+    <section class="policy-holder">
+        <div class="section-header">
+            <div class="icon-user"></div>
+            <h2>Datos del tomador/ asegurado</h2>
+        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Tipo de documento:</label>
+                <div class="options">
+                    <span>C.C</span>
+                    <input type="checkbox"  />
+                    <span>C.E</span>
+                    <input type="checkbox"  />
+                    <span>P.S</span>
+                    <input type="checkbox"  />
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Número de documento:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label>Fecha de nacimiento:</label>
+                <input type="date" />
+            </div>
+            <div class="form-group">
+                <label>Género:</label>
+                <div class="options">
+                    <span>M</span>
+                    <input type="checkbox" />
+                    <span>F</span>
+                    <input type="checkbox" />
+                    <span>NB</span>
+                    <input type="checkbox" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Nacionalidad:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label>País de residencia:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico:</label>
+                <input type="email" />
+            </div>
+            <div class="form-group">
+                <label>Teléfono celular:</label>
+                <input type="tel" />
+            </div>
+            <div class="form-group">
+                <label>Dirección:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label>Ciudad de residencia:</label>
+                <input type="text" />
+            </div>
+        </div>
+        <div class="insurance-details">
+            <div class="detail">
+                <div class="icon-policy"></div>
+                <p>Número de póliza</p>
+                <input type="text" />
+            </div>
+            <div class="detail">
+                <div class="icon-price"></div>
+                <p>Precio del seguro</p>
+                <input type="text" />
+            </div>
+            <div class="detail">
+                <div class="icon-payment-type"></div>
+                <p>Tipo de pago</p>
+                <input type="text" value="Mensual" readonly="true" />
+            </div>
+            <div class="detail">
+                <div class="icon-payment-method"></div>
+                <p>Medio de pago</p>
+                <input type="text" value="Tarjeta de crédito o cuenta" readonly="true" />
+            </div>
+            <div class="detail">
+                <div class="icon-start-date"></div>
+                <p>Fecha inicio vigencia</p>
+                <input type="date" />
+            </div>
+            <div class="detail">
+                <div class="icon-end-date"></div>
+                <p>Fecha fin vigencia</p>
+                <input type="date" />
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <header class="beneficiarios">
+            <div class="icon-beneficiarios"></div>
+            <h1>Beneficiarios</h1>
+        </header>
+
+        <!-- Descripción de beneficiarios -->
+        <section class="description">
+            <p>
+                <strong>Diagnóstico de Cáncer:</strong> El tomador y/o asegurado.
+            </p>
+            <p>
+                <strong>Muerte por Accidente o por Cáncer:</strong> Los
+                beneficiarios designados o los de ley.
+            </p>
+        </section>
+
+        <!-- Interés asegurable -->
+        <section class="interes-asegurable">
+            <div class="icon-shield"></div>
+            <h2>Interés asegurable</h2>
+        </section>
+
+        <!-- Tabla de coberturas -->
+        <section class="coberturas">
+            <table>
+                <thead>
+                <tr>
+                    <th>Coberturas</th>
+                    <th>Primer Diagnóstico de Cáncer</th>
+                    <th>Muerte por Accidente o por Cáncer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        En este seguro el interés asegurado lo tiene el asegurado
+                        frente a su salud
+                    </td>
+                    <td><span class="checkmark">✔</span></td>
+                    <td><span class="checkmark"></span></td>
+                </tr>
+                <tr>
+                    <td>
+                        En este seguro el interés asegurado lo tiene el asegurado
+                        frente a su propia vida
+                    </td>
+                    <td><span class="checkmark"></span></td>
+                    <td><span class="checkmark">✔</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Protección -->
+        <section class="proteccion">
+            <div class="icon-proteccion"></div>
+            <h2>Estás protegido en caso de:</h2>
+
+            <!-- Primer Diagnóstico de Cáncer -->
+            <div class="cancer-diagnosis">
+                <h3>Primer Diagnóstico de Cáncer</h3>
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h4>¿Qué me cubre?</h4>
+                    </div>
+                    <div class="info-block">
+                        <h4>¿Cuánto me cubre?</h4>
+                    </div>
+                    <div class="info-block" style="font-size: x-small">
+                        USTED RECIBIRA UN UNICO PAGO EN CASO DE SER DIAGNOSTICADO
+                        CLINICAMENTE POR PRIMERA VEZ CON UN CANCER MALIGNO
+                        (INDEPENDIENTE DE SU LOCALIZACION O ETAPA) DENTRO DE LA VIGENCIA
+                        DE ESTE SEGURO. EL DIAGNOSTICO DEBE SER REALIZADO POR UN MEDICO
+                        LICENCIADO EN COLOMBIA CONFIRMADO POR UN BIOPSIA O EXAMEN
+                        DIAGNOSTICO QUE CERTIFIQUE LA PRESENCIA DE CANCER MALIGNO
+
+                        <ul>
+                            <li>
+                                CANCER DE PIEL DE MELANOMA, SE PAGARA EL 100% DEL VALOR
+                                Asegurado
+                            </li>
+                            <li>
+                                CANCER DE PIEL DISTINTO A MALANOMA, SE PAGARA EL 20% DEL
+                                VALOR ASEGURADO
+                            </li>
+                        </ul>
+
+                        <strong>IMPORTANTE:</strong>
+
+                        <ul>
+                            <li>
+                                APLCIA UNICAMENTE PARA LOS DIAGNOSTICOS DE CANCER MALIGNO,
+                                OCURRIDOS POR PRIMERA VEZ DENTRO DE LA VIGENCIA DE LA POLIZA
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                            class="info-block"
+                            style="display: flex; align-items: center; text-align: center"
+                    >
+                        <h4>Un pago único de $ <input type="number" /></h4>
+                    </div>
+                    <div class="info-block">
+                        <h4>¿Qué no te cubre?</h4>
+                    </div>
+                    <div class="info-block">
+                        <p>
+                            LAS METASTASIS ORIGINADAS A PARTIR DE UN CANCER DIAGNOSTICADO
+                            ANTES DEL INICIO DE LA VIGENCIA DE ESTE SEGURO.
+                        </p>
+                    </div>
+                    <div class="info-block">
+                        <h4>¿Cuántos eventos al año me pueden indemnizar?</h4>
+                    </div>
+                    <div class="info-block">
+                        <p>Un (1) diagnóstico por vigencia.</p>
+                    </div>
+                    <div class="info-block">
+                        <h4>¿Desde cuándo puedo reclamar esta cobertura?</h4>
+                    </div>
+                    <div class="info-block">
+                        <p>
+                            A partir del día noventa y uno (91) desde el inicio de
+                            vigencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Muerte por Accidente o por Cáncer -->
+            <div class="death-coverage">
+                <h3>Muerte por Accidente o por Cáncer</h3>
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h4>¿Qué me cubre?</h4>
+                    </div>
+                    <div class="info-block">
+                        <h4>¿Cuánto me cubre?</h4>
+                    </div>
+                    <div class="info-block" style="font-size: x-small">
+                        SUS BENEFICIARIOS DESIGNADOS O EN SU DEFECTO LOS DE LEY
+                        RECIBIRAN EL PAGO DEL VALOR ASEGURADO EN CASO QUE USTED FALLEZCA
+                        A CONSECUENCIA DE UN ACCIDENTE O DE LOS EFECTOS QUE SE PUEDAN
+                        OCASIONAR DE UN CANCER AMPARADO EN ESTE SEGURO.
+
+                        <br />
+                        <br />
+
+                        <strong>IMPORTANTE</strong>
+
+                        <ul>
+                            <li>
+                                SE INCLUYE HOMICIDIO DESDE EL INICIO DE LA VIGENCIA DE LA
+                                POLIZA
+                            </li>
+                        </ul>
+                    </div>
+                    <div
+                            class="info-block"
+                            style="display: flex; align-items: center; text-align: center"
+                    >
+                        <h4>Un pago único de $ <input type="number" /></h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section>
+        <div class="section">
+            <h2 class="title">Exclusiones generales</h2>
+            <p class="content-box">
+                LAS RADIACIONES IONIZANTES O CONTAMINACIÓN POR RADIOACTIVIDAD DE
+                COMBUSTIBLE NUCLEAR O DE CUALQUIER RESIDUO NUCLEAR PRODUCIDO POR
+                COMBUSTIÓN DE COMBUSTIBLE NUCLEAR, RADIOACTIVIDAD, TÓXICO,
+                EXPLOSIVO, O CUALQUIER OTRA PROPIEDAD PELIGROSA DE UN EXPLOSIVO
+                NUCLEAR O DE SUS COMPONENTES.
+            </p>
+        </div>
+
+        <!-- Ecosistema de servicios -->
+        <div class="section">
+            <h2 class="title">Ecosistema de servicios</h2>
+            <p class="content">
+                De forma adicional a los amparos otorgados mediante la presente
+                póliza, Cardif Colombia Seguros Generales S.A. pone a su disposición
+                una plataforma de servicios que le ayudarán a disfrutar de manera
+                más amplia los beneficios de su seguro. Los servicios podrán ser
+                prestados directamente o por terceros.
+            </p>
+            <p class="content">
+                El alcance, condiciones y disponibilidad de estos estará determinado
+                por la aseguradora para el propósito mencionado. En la medida en que
+                por su naturaleza son flexibles, personalizados, de uso permanente y
+                gratuito, es decir que no requieren el pago de valores adicionales a
+                la prima del seguro, los servicios ofrecidos inicialmente podrán
+                cambiar durante la vigencia de la seguro y sus condiciones podrán
+                consultarse en nuestras líneas de atención en Bogotá al 601 7455553
+                o Resto del país 018000-960011.
+            </p>
+        </div>
+
+        <!-- Documentos para reclamación -->
+        <div class="section">
+            <h2 class="title">Documentos para la reclamación del seguro</h2>
+            <p class="content">
+                Para realizar la reclamación corresponde al asegurado y/o
+                beneficiario, demostrar la ocurrencia del siniestro y la cuantía de
+                la pérdida conforme a lo previsto por el artículo 1077 del Código de
+                Comercio. Sin perjuicio de la libertad probatoria prevista en la
+                ley, se podrán presentar los documentos mencionados en el
+                condicionado, así como cualquier otro que consideres pertinente.
+            </p>
+            <div class="whatsapp-box">
+                <p>
+                    En caso de que usted o sus beneficiarios quieran reclamar
+                    cualquiera de estas coberturas, nuestra línea de WhatsApp está
+                    disponible.
+                </p>
+                <div class="whatsapp-info">
+                    <img
+                            src="icono-whatsapp.png"
+                            alt="Ícono WhatsApp"
+                            class="whatsapp-icon"
+                    />
+                    <span class="whatsapp-number">3124168684</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <!-- Terminación del seguro -->
+        <section class="section">
+            <div class="section-header">
+                <h1>Terminación del seguro</h1>
+            </div>
+            <p class="description">
+                El seguro podrá terminar por cualquiera de las siguientes causas:
+            </p>
+            <div class="causes">
+                <div class="cause">
+                    <p>
+                        Cancelación del producto financiero seleccionado para debitar el
+                        pago del seguro.
+                    </p>
+                </div>
+                <div class="cause">
+                    <p>
+                        Cuando el asegurado cumpla la edad máxima de permanencia en el
+                        seguro.
+                    </p>
+                </div>
+                <div class="cause">
+                    <p>
+                        La mora en el pago de la prima de la póliza o de los
+                        certificados o anexos que se expidan con fundamento en ella,
+                        producirá la terminación automática del contrato y dará derecho
+                        al asegurador para exigir el pago de la prima devengada y de los
+                        gastos causados con ocasión de la expedición del contrato.
+                    </p>
+                </div>
+                <div class="cause">
+                    <p>Muerte del asegurado por una causa no amparada.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Declaraciones y autorizaciones -->
+        <section class="section">
+            <div class="section-header">
+                <h1>Declaraciones y autorizaciones</h1>
+            </div>
+            <ol class="declarations">
+                <li>
+                    Los términos y condiciones del presente producto, así como las
+                    autorizaciones y declaraciones realizadas al momento de la
+                    celebración del contrato podrán ser consultadas en la ruta:
+                </li>
+                <li>
+                    El condicionado general de este producto podrá ser consultado en
+                    la ruta:
+                </li>
+            </ol>
+        </section>
+    </section>
+
+    <!-- Sección: Atención al Cliente -->
+    <section class="section">
+        <div class="header">
+            <h1>Atención al cliente</h1>
+        </div>
+        <p class="description">
+            Si quiere ejercer sus derechos, sugerencias, quejas o reclamos,
+            <strong
+            >podrá comunicarse con las líneas de atención al cliente de cada
+                ciudad y/o a nivel nacional.</strong
+            >
+        </p>
+        <div class="contact-box">
+            <div class="contact-item">
+                <p>
+                    Para radicar o conocer el estado de una reclamación, escríbenos a
+                    la línea de atención de WhatsApp <strong>3124168684</strong> o
+                    comuníquese con nuestras líneas de atención al cliente.
+                </p>
+            </div>
+            <div class="phone-numbers">
+                <div class="cities">
+                    <div>
+                        <strong>A nivel nacional</strong><br /><br />018000960011
+                    </div>
+                    <div><strong>{Bogotá}</strong><br /><br />60(1) 7455553</div>
+                    <div><strong>{Cali}</strong><br /><br />60(2) 4850809</div>
+                    <div><strong>{Medellín}</strong><br /><br />60(4) 6040027</div>
+                    <div>
+                        <strong>{Barranquilla}</strong><br /><br />60(5) 3851828
+                    </div>
+                    <div><strong>{Bucaramanga}</strong><br /><br />60(7) 6971129</div>
+                </div>
+            </div>
+            <div class="note">
+                <p>
+                    De conformidad con lo establecido en el Artículo 1048 del Código
+                    de Comercio, usted tiene derecho a solicitar copia de la póliza y
+                    sus condiciones. En caso de requerirlo, por favor comuníquese con
+                    las líneas locales de atención al cliente en cada ciudad y/o a
+                    nivel nacional.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Defensor del Consumidor Financiero -->
+    <section class="section">
+        <h1>Defensor del consumidor financiero</h1>
+        <div class="defensor-box">
+            <div class="defensor-item">
+                <p>
+                    <strong>Defensor Principal</strong> José Federico Ustáriz
+                    González<br />
+                    <strong>Defensor Suplente</strong> Ana María Giraldo
+                </p>
+            </div>
+            <div class="defensor-item">
+                <p>
+                    <strong>Correo electrónico:</strong>
+                    defensoracardif@ustarizabogados.com<br />
+                    <strong>Página web:</strong>
+                    <a href="https://ustarizabogados.com"
+                    >https://ustarizabogados.com</a
+                    >
+                </p>
+            </div>
+            <div class="defensor-item">
+                <p><strong>Teléfono</strong></p>
+                <ul>
+                    <li>601 6108161</li>
+                    <li>601 6108164</li>
+                </ul>
+            </div>
+            <div class="defensor-item">
+                <p>
+                    <strong>Dirección:</strong> Carrera 11a # 96 - 51 oficina 203,
+                    Edificio Oficity, Bogotá D.C
+                </p>
+            </div>
+            <div class="defensor-item">
+                <p>
+                    <strong>Horario de atención:</strong> Lunes a viernes, 8:00 a.m. a
+                    6:00 p.m., Jornada continua
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="signature">
+        <div class="signature-box"></div>
+    </section>
+    <footer>
+        <p>
+            Cardif Colombia Seguros Generales S.A. se complace en tenerlo a usted
+            como cliente y espera que se sienta satisfecho con los amparos
+            ofrecidos en este seguro. Todo lo no previsto en el presente documento
+            se regira por el codigo de comercio
+        </p>
+    </footer>
 </div>
-
-<div class="section" th:if="${showSection1}">
-    <h2>Sección 1</h2>
-    <div class="checkbox">
-        <input type="checkbox" /> Checkbox
-    </div>
-    <img th:src="@{src/main/resources/static/images/logo.jpg}" alt="Imagen de ejemplo" width="200px" height="200px" />
-    <p>Descripción de la sección 1.</p>
-    <div class="input-field">
-        <label for="campoTexto">Ingrese un texto:</label>
-        <input type="text" id="campoTexto" placeholder="Escribe aquí..." />
-    </div>
-</div>
-
-<div class="section" th:if="${showSection2}">
-    <h2>Sección 2</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Correo Electrónico</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Juan Pérez</td>
-            <td>30</td>
-            <td>juan.perez@gmail.com</td>
-        </tr>
-        <tr>
-            <td>María López</td>
-            <td>25</td>
-            <td>maria.lopez@gmail.com</td>
-        </tr>
-        </tbody>
-    </table>
-    <p>Tabla sección 2.</p>
-</div>
-
-<div class="section" th:if="${showSection3}">
-    <h2>Sección 3</h2>
-    <p>Por favor, firme:</p>
-    <div class="signature">
-        <div class="line"></div>
-        <p>Firma del usuario</p>
-    </div>
-</div>
-
-<div class="footer">
-    <p>Generado automáticamente el <span th:text="${#dates.format(new java.util.Date(), 'yyyy-MM-dd HH:mm:ss')}"></span>.</p>
-</div>
-
 </body>
 </html>

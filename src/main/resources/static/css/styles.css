@@ -1,55 +1,565 @@
+/* styles.css */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #333;
+  width: 660px;
 }
 
-.section {
-    border: 1px solid #ccc;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+input {
+  background-color: #eaf8f5;
+  border: none;
+  outline: none;
+  border-radius: 5px; /* Flying Saucer soporta border-radius */
+}
+
+h1,
+h2 {
+  color: #37c6d5;
+}
+
+.container {
+  width: 100%; /* CSS2.1 no soporta max-width */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#autores {
+  background-color: #eaf8f5;
 }
 
 .header {
-    text-align: center;
-    background-color: #f4f4f4;
-    padding: 10px 0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #eaf8f5
 }
 
-.checkbox {
-    margin-bottom: 10px;
+.header-left {
+  float: left; /* Usar float en lugar de flexbox */
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.header-left .icon-shield {
+  width: 40px;
+  height: 40px;
+  background-color: #4caf50;
+  border-radius: 50%; /* Flying Saucer soporta border-radius */
+  margin-right: 15px;
 }
 
-.table th, .table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #1e989b;
 }
 
-.table th {
-    background-color: #f4f4f4;
+.header-right {
+  float: right; /* Usar float en lugar de flexbox */
+}
+
+.header-right .icon-woman-shield {
+  width: 50px;
+  height: 50px;
+  background-color: #e0f2f1;
+  border-radius: 50%;
+  position: relative; /* Esta propiedad funciona */
+}
+
+.header-right .icon-woman-shield-before {
+  content: ""; /* Flying Saucer no soporta pseudo-elementos como ::before */
+  width: 20px;
+  height: 20px;
+  border: 4px solid #4caf50;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10px; /* Centrar el círculo */
+  margin-left: -10px;
+}
+
+.logos {
+  margin: 20px 0;
+  background-color: #eaf8f5;
+  padding: 20px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.insurance-actors {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px; /* Flying Saucer soporta border-radius */
+}
+
+.insurance-actors h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #1e989b;
+}
+
+.actors-container {
+  /* Reemplazo de flexbox */
+  width: 100%;
+  overflow: hidden; /* Evita problemas con float */
+}
+
+.actor {
+  float: left; /* Usar float para dividir en columnas */
+  width: 48%; /* Mantener espacio entre actores */
+  text-align: center;
+  margin-right: 2%; /* Espaciado entre columnas */
+}
+
+.actor:last-child {
+  margin-right: 0; /* Eliminar margen del último */
+}
+
+.actor h3 {
+  font-size: 18px;
+  background-color: #bbbbbb;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.actor-info {
+  height: 40px;
+  background-color: #eaf8f5;
+  border-radius: 5px;
+  width: 100%;
+  border: none; /* Flying Saucer no necesita border-color si no hay border */
+}
+
+.policy-holder {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.section-header {
+  margin-bottom: 20px;
+  overflow: hidden; /* Para manejar flotantes */
+}
+
+.section-header .icon-user {
+  float: left; /* Usar float en lugar de flexbox */
+  width: 50px;
+  height: 50px;
+  background-color: #d7f5f0;
+  border-radius: 50%; /* Compatible con Flying Saucer */
+  margin-right: 10px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 50px; /* Para alinear verticalmente con el ícono */
+}
+
+.form-grid {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Para contener flotantes */
+}
+
+.form-group {
+  float: left; /* Reemplaza grid */
+  width: 48%; /* Espaciado entre columnas */
+  margin-right: 4%; /* Espacio entre las dos columnas */
+}
+
+.form-group:nth-child(2n) {
+  margin-right: 0; /* Eliminar margen de la segunda columna */
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+}
+
+.options {
+  width: 100%;
+  overflow: hidden; /* Manejo de flotantes */
+}
+
+.options span {
+  float: left; /* Usar float en lugar de flex */
+  margin-right: 10px; /* Espaciado entre opciones */
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+  float: left; /* Alinear con las opciones */
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #eaf8f5;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+}
+
+.insurance-details {
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden; /* Manejo de columnas flotantes */
+}
+
+.detail {
+  float: left; /* Reemplaza grid */
+  width: 31%; /* Tres columnas con espacio */
+  margin-right: 3%; /* Espaciado entre columnas */
+  text-align: center;
+}
+
+.detail:nth-child(3n) {
+  margin-right: 0; /* Eliminar margen de la última columna */
+}
+
+.detail p {
+  margin: 10px 0 5px;
+  font-size: 14px;
+}
+
+.detail input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.icon-policy,
+.icon-price,
+.icon-payment-type,
+.icon-payment-method,
+.icon-start-date,
+.icon-end-date {
+  width: 50px;
+  height: 50px;
+  background-color: #d7f5f0;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+}
+
+header.beneficiarios {
+  overflow: hidden; /* Para manejar contenido flotante */
+  margin-bottom: 20px;
+}
+
+header.beneficiarios .icon-beneficiarios {
+  float: left; /* Usar float para alineación */
+  width: 50px;
+  height: 50px;
+  background-color: #d7f5f0;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+header.beneficiarios h1 {
+  float: left; /* Alinear junto al ícono */
+  font-size: 24px;
+  color: #00796b;
+  margin: 0;
+  line-height: 50px; /* Centrado vertical */
+}
+
+section.description p {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0;
+  border: 1px solid #45ffea;
+  padding: 10px;
+}
+
+section.interes-asegurable {
+  margin: 20px 0;
+  overflow: hidden; /* Manejo de contenido flotante */
+}
+
+section.interes-asegurable .icon-shield {
+  float: left; /* Alinear el icono a la izquierda */
+  width: 40px;
+  height: 40px;
+  background-color: #4caf50;
+  margin-right: 10px;
+}
+
+section.interes-asegurable h2 {
+  float: left; /* Alinear el título junto al icono */
+  margin: 0;
+  font-size: 20px;
+  line-height: 40px; /* Centrado vertical */
+}
+
+section.coberturas {
+  margin: 20px 0;
+}
+
+section.coberturas h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+section.coberturas table {
+  width: 100%;
+  border-collapse: collapse; /* Compatible con Flying Saucer */
+  margin-bottom: 20px;
+}
+
+section.coberturas thead tr {
+  background-color: #b2b2b2;
+  color: white;
+}
+
+section.coberturas thead tr th:first-child {
+  background-color: #37c6d5;
+  color: white;
+}
+
+section.coberturas th,
+section.coberturas td {
+  border: 1px solid #37c6d5;
+  padding: 10px;
+  text-align: left;
+}
+
+section.coberturas .checkmark {
+  font-size: 18px;
+  color: green;
+}
+
+section.proteccion {
+  background-color: #ffffff;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+section.proteccion .icon-proteccion {
+  width: 50px;
+  height: 50px;
+  background-color: #d7f5f0;
+  margin: 0 auto 10px; /* Centrado horizontal */
+}
+
+section.proteccion h2 {
+  text-align: center;
+  margin: 0;
+  font-size: 20px;
+  color: #37c6d5;
+}
+
+.cancer-diagnosis h3 {
+  color: white;
+  background-color: #cbcaca;
+  padding: 15px; /* Reemplaza rem por px */
+  text-align: center;
+}
+
+.info-grid {
+  margin: 20px 0;
+}
+
+.info-block {
+  background-color: white;
+  border: 1px solid #37c6d5;
+  padding: 15px;
+}
+
+.info-block h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.info-block p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.death-coverage h3 {
+  color: white;
+  background-color: #cbcaca;
+  padding: 15px; /* Ajustado */
+  text-align: center;
+}
+
+.title {
+  font-size: 18px; /* Reemplaza rem por px */
+  color: #37c6d5;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.content-box {
+  background-color: white;
+  border: 1px solid #37c6d5;
+  padding: 15px;
+  font-size: 14px; /* Reemplaza rem */
+  line-height: 1.6;
+}
+
+.content {
+  font-size: 14px; /* Reemplaza rem */
+  line-height: 1.6;
+  color: #424242;
+}
+
+.whatsapp-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #b2dfdb;
+  background-color: #e0f2f1;
+}
+
+.whatsapp-info {
+  margin-top: 10px;
+}
+
+.whatsapp-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.whatsapp-number {
+  font-size: 16px; /* Reemplaza rem */
+  color: #00796b;
+  font-weight: bold;
+}
+
+.section-header {
+  margin-bottom: 15px;
+}
+
+.section-header h1 {
+  font-size: 20px; /* Ajustado para px */
+  color: #0091ce;
+}
+
+.description {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Causes styles */
+.causes {
+  margin-bottom: 20px;
+}
+
+.cause {
+  border: 1px solid #cce5f5;
+  padding: 10px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.cause p {
+  font-size: 12px; /* Ajustado */
+  color: #333;
+  line-height: 1.4;
+}
+
+.icon-cause {
+  width: 30px;
+  height: 30px;
+}
+
+.declarations li {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Contact Box */
+.contact-box {
+  margin-top: 20px;
+}
+
+.contact-item {
+  border: 1px solid #cce5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.phone-numbers h2 {
+  font-size: 16px;
+  color: #0091ce;
+  margin-bottom: 10px;
+}
+
+.phone-numbers .cities div {
+  font-size: 12px;
+  color: #333;
+}
+
+/* Defensor Box */
+.defensor-box {
+  margin-top: 20px;
+}
+
+.defensor-item {
+  border: 1px solid #cce5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.defensor-item p {
+  font-size: 12px;
+  color: #333;
+}
+
+.defensor-item a {
+  color: #0091ce;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  font-size: 10px;
+  color: #666;
+  margin-top: 30px;
 }
 
 .signature {
-    margin-top: 100px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: left;
+  font-size: 12px;
+  color: #333;
 }
 
-.signature .line {
-    width: 60%;
-    margin: 20px auto;
-    border-top: 2px solid #000;
+.signature-box {
+  margin-top: 50px;
+  border-top: 1px solid #000;
+  padding: 5px;
 }
 
-.footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.8em;
-    color: #777;
+.signature-box .name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.signature-box .position,
+.signature-box .company {
+  font-size: 12px;
+  color: #555;
 }
