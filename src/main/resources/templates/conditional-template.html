@@ -25,7 +25,7 @@
             <div class="actors-container">
                 <div class="actor">
                     <h3>Tomador / Asegurado</h3>
-                    <input type="text" class="actor-info" />
+                    <input type="text" class="actor-info" th:value="${seguro.tomador}" th:readonly="${seguro.tomador} != null" />
                 </div>
                 <div class="actor">
                     <h3>Aseguradora</h3>
@@ -46,67 +46,67 @@
                 <label>Tipo de documento:</label>
                 <div class="options">
                     <span>C.C</span>
-                    <input type="checkbox"  />
+                    <input type="checkbox" th:checked="${seguro.tipoDocumento} == 'CC'" th:readonly="${seguro.tipoDocumento} != null"  />
                     <span>C.E</span>
-                    <input type="checkbox"  />
+                    <input type="checkbox" th:checked="${seguro.tipoDocumento} == 'CE'" th:readonly="${seguro.tipoDocumento} != null" />
                     <span>P.S</span>
-                    <input type="checkbox"  />
+                    <input type="checkbox" th:checked="${seguro.tipoDocumento} == 'PS'" th:readonly="${seguro.tipoDocumento} != null" />
                 </div>
             </div>
             <div class="form-group">
                 <label>Número de documento:</label>
-                <input type="text" />
+                <input type="text" th:value="${seguro.numeroDocumento}" th:readonly="${seguro.numeroDocumento} != null" />
             </div>
             <div class="form-group">
                 <label>Fecha de nacimiento:</label>
-                <input type="date" />
+                <input type="date" th:value="${seguro.fechaNacimiento}" th:readonly="${seguro.fechaNacimiento} != null" />
             </div>
             <div class="form-group">
                 <label>Género:</label>
                 <div class="options">
                     <span>M</span>
-                    <input type="checkbox" />
+                    <input type="checkbox" th:checked="${seguro.genero} == 'M'" th:readonly="${seguro.genero} != null" />
                     <span>F</span>
-                    <input type="checkbox" />
+                    <input type="checkbox" th:checked="${seguro.genero} == 'F'" th:readonly="${seguro.genero} != null" />
                     <span>NB</span>
-                    <input type="checkbox" />
+                    <input type="checkbox" th:checked="${seguro.genero} == 'NB'" th:readonly="${seguro.genero} != null" />
                 </div>
             </div>
             <div class="form-group">
                 <label>Nacionalidad:</label>
-                <input type="text" />
+                <input type="text" th:value="${seguro.nacionalidad}" th:readonly="${seguro.nacionalidad} != null" />
             </div>
             <div class="form-group">
                 <label>País de residencia:</label>
-                <input type="text" />
+                <input type="text" th:value="${seguro.pais}" th:readonly="${seguro.pais} != null" />
             </div>
             <div class="form-group">
                 <label>Correo electrónico:</label>
-                <input type="email" />
+                <input type="email" th:value="${seguro.email}" th:readonly="${seguro.email} != null" />
             </div>
             <div class="form-group">
                 <label>Teléfono celular:</label>
-                <input type="tel" />
+                <input type="tel" th:value="${seguro.celular}" th:readonly="${seguro.celular} != null" />
             </div>
             <div class="form-group">
                 <label>Dirección:</label>
-                <input type="text" />
+                <input type="text" th:value="${seguro.direccion}" th:readonly="${seguro.direccion} != null" />
             </div>
             <div class="form-group">
                 <label>Ciudad de residencia:</label>
-                <input type="text" />
+                <input type="text" th:value="${seguro.ciudad}" th:readonly="${seguro.ciudad} != null" />
             </div>
         </div>
         <div class="insurance-details">
             <div class="detail">
                 <div class="icon-policy"></div>
                 <p>Número de póliza</p>
-                <input type="text" />
+                <input type="text" th:value="${seguro.numPoliza}" th:readonly="${seguro.numPoliza} != null" />
             </div>
             <div class="detail">
                 <div class="icon-price"></div>
                 <p>Precio del seguro</p>
-                <input type="text" />
+                <input type="text" th:value="${seguro.precioSeguro}" th:readonly="${seguro.precioSeguro} != null" />
             </div>
             <div class="detail">
                 <div class="icon-payment-type"></div>
@@ -121,12 +121,12 @@
             <div class="detail">
                 <div class="icon-start-date"></div>
                 <p>Fecha inicio vigencia</p>
-                <input type="date" />
+                <input type="date" th:value="${seguro.fechaInicioVigencia}" th:readonly="${seguro.fechaInicioVigencia} != null" />
             </div>
             <div class="detail">
                 <div class="icon-end-date"></div>
                 <p>Fecha fin vigencia</p>
-                <input type="date" />
+                <input type="date" th:value="${seguro.fechaFinVigencia}" th:readonly="${seguro.fechaFinVigencia} != null" />
             </div>
         </div>
     </section>
@@ -232,7 +232,7 @@
                             class="info-block"
                             style="display: flex; align-items: center; text-align: center"
                     >
-                        <h4>Un pago único de $ <input type="number" /></h4>
+                        <h4>Un pago único de $ <input type="number" th:value="${seguro.cuantoCubreDiagnostico}" th:readonly="${seguro.cuantoCubreDiagnostico} != null" /></h4>
                     </div>
                     <div class="info-block">
                         <h4>¿Qué no te cubre?</h4>
@@ -293,7 +293,7 @@
                             class="info-block"
                             style="display: flex; align-items: center; text-align: center"
                     >
-                        <h4>Un pago único de $ <input type="number" /></h4>
+                        <h4>Un pago único de $ <input type="number" th:value="${seguro.cuantoCubreMuerte}" th:readonly="${seguro.cuantoCubreMuerte} != null" /></h4>
                     </div>
                 </div>
             </div>

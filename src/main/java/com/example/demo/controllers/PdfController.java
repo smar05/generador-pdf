@@ -1,6 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.SeguroIntegralCancer;
+import com.example.demo.repositories.SeguroIntegralCancerRepository;
 import com.example.demo.services.PdfService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -8,8 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.context.Context;
 
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+
 @Controller
 public class PdfController {
+
+    @Autowired
+    private SeguroIntegralCancerRepository seguroIntegralCancerRepository;
 
     private final PdfService pdfService;
 
@@ -18,19 +28,19 @@ public class PdfController {
     }
 
     @GetMapping("/generate-pdf")
-    public ResponseEntity<byte[]> generatePdf(@RequestParam(value = "showSection1", defaultValue = "true") boolean showSection1,
-                                              @RequestParam(value = "showSection2", defaultValue = "false") boolean showSection2,
-                                              @RequestParam(value = "showSection3", defaultValue = "true") boolean showSection3) {
-        Context context = new org.thymeleaf.context.Context();
+    public ResponseEntity<byte[]> generatePdf(@RequestParam(value = "idSeguroIntegralCancer", required = false) final String idSeguroIntegralCancer) {
+        final Context context = new org.thymeleaf.context.Context();
 
-        context.setVariable("showSection1", showSection1);
-        context.setVariable("showSection2", showSection2);
-        context.setVariable("showSection3", showSection3);
-        context.setVariable("title", "Generación de PDF");
+        if (idSeguroIntegralCancer != null) {
+            final Optional<SeguroIntegralCancer> optionalSeguroIntegralCancer = seguroIntegralCancerRepository.findById(idSeguroIntegralCancer);
+            final SeguroIntegralCancer seguroIntegralCancer = optionalSeguroIntegralCancer.orElse(null);
 
-        byte[] pdfBytes = pdfService.generatePdf("conditional-template", context);
+            context.setVariable("seguro", seguroIntegralCancer);
+        }
 
-        HttpHeaders headers = new HttpHeaders();
+        final byte[] pdfBytes = pdfService.generatePdf("conditional-template", context);
+
+        final HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=generated.pdf");
         headers.add("Content-Type", "application/pdf");
 
